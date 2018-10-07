@@ -1,40 +1,45 @@
 #!/bin/bash
-LED_GPIO=16  # Use a variable -- easy to change GPIO number
 
-# An example Bash functions
+# script baseado no código disponibilizado em:
+# Derek Molloy, Exploring Raspberry Pi: Interfacing to the Real World with Embedded Linux,
+# Wiley 2016, ISBN 978-1-119-1868-1, http://www.exploringrpi.com/
+
+LED_GPIO=16  # Usar uma variavel facilita alteracoes futuras na porta usada
+
+# funcoes Bash
 function setLED
-{                                      # $1 is the 1st argument passed to this function
+{                                      # $1 eh o primeiro argumento passado para a funcao
 	echo $1 >> "/sys/class/gpio/gpio$LED_GPIO/value"
 }
 
-# Start of the program -- start reading from here
-if [ $# -ne 1 ]; then                  # if there is not exactly one argument
-	echo "No command was passed. Usage is: bashLED command,"
-	echo "where command is one of: setup, on, off, status and close"
-	echo -e " e.g., bashLED setup, followed by bashLED on"
-	exit 2                         # error that indicates invalid number of arguments
+# Inicio do programa
+if [ $# -ne 1 ]; then                  # se nao houver exatamente um argumento passado ao programa
+	echo "Nenhum comando passado. Uso: ./LED.sh command,"
+	echo "onde comando pode ser: setup, on, off, status e close"
+	echo -e " ex.: ./LED.sh setup, e em seguinda, ./LED.sh on"
+	exit 2                         # erro que indica numero invalido de argumentos
 fi
 
-echo "The LED command that was passed is: $1"
+echo "O comando passado foi: $1"
 
 if [ "$1" == "setup" ]; then
-	echo "Exporting GPIO number $LED_GPIO"
+	echo "Habilitando a GPIO numero $LED_GPIO"
 	echo $LED_GPIO >> "/sys/class/gpio/export"
-	sleep 1                        # to ensure gpio has been exported before next step
+	sleep 1                        # esperar 1 segundo para garantir que a gpio foi exportada
 	echo "out" >> "/sys/class/gpio/gpio$LED_GPIO/direction"
 elif [ "$1" == "on" ]; then
-	echo "Turning the LED on"
-	setLED 1                       # 1 is received as $1 in the setLED function
+	echo "Acendendo o LED"
+	setLED 1                       # 1 eh recebido como $1 na funcao setLED
 elif [ "$1" == "off" ]; then
-	echo "Turning the LED off"
-	setLED 0                       # 0 is received as $1 in the setLED function
+	echo "Desligando o LED"
+	setLED 0                       # 0 eh recebido como $1 na funcao setLED
 elif [ "$1" == "status" ]; then
 	state=$(cat "/sys/class/gpio/gpio$LED_GPIO/value")
-	echo "The LED state is: $state"
+	echo "O estado do LED eh: $state"
 elif [ "$1" == "close" ]; then
-	echo "Unexporting GPIO number $LED_GPIO"
+	echo "Desabilitando a GPIO numero $LED_GPIO"
 	echo $LED_GPIO >> "/sys/class/gpio/unexport"
 else
-	echo "Unrecongnized command."
-	exit 3                         # error that indicates unrecognized command
+	echo "Comando nao reconhecido."
+	exit 3                         # erro que indica comando nao reconhecido
 fi
