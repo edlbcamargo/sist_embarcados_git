@@ -6,11 +6,11 @@
 
 import sys
 from time import sleep
-LED16_PATH = "/sys/class/gpio/gpio16/"
+LED_PATH = "/sys/class/gpio/gpio16/"
 SYSFS_DIR = "/sys/class/gpio/"
 LED_NUMBER = "16"
 
-def writeLED ( filename, value, path=LED16_PATH ):
+def writeLED ( filename, value, path=LED_PATH ):
 	"Esta funcao escreve o valor 'value' no arquivo 'path+filename'"
 	fo = open( path + filename,"w")
 	fo.write(value)
@@ -40,7 +40,7 @@ elif sys.argv[1]=="close":
 	writeLED (filename="unexport", value=LED_NUMBER, path=SYSFS_DIR)
 elif sys.argv[1]=="status":
 	print("Pegando o status da gpio")
-	fo = open( LED4_PATH + "value", "r")
+	fo = open( LED_PATH + "value", "r")
 	print(fo.read())
 	fo.close()
 else:
