@@ -17,9 +17,9 @@ meuPWM.start(0)
 for x in range(0,3):
     for dc in range(0,100,5):
         meuPWM.ChangeDutyCycle(dc)
-        time.sleep(0.1)
+        sleep(0.1)
     for dc in range(100,0,-5):
         meuPWM.ChangeDutyCycle(dc)
-        time.sleep(0.1)
+        sleep(0.1)
 
 GPIO.cleanup()
