@@ -13,7 +13,7 @@ int main() {
    wiringPiSetupGpio();                // usar a numeracao GPIO, nao WPi
    cout << "Iniciando o chaveamento do LED" << LED_GPIO << endl;
    pinMode(LED_GPIO, OUTPUT);          // ajusta a GPIO23 como saida
-   for(int x = 0; x < 200000; x++){     // 20000 iteracoes
+   for(int x = 0; x < 2000000; x++){     // 20000 iteracoes
       digitalWrite(LED_GPIO, HIGH);    // LED ligado
       for(int i=0; i<50; i++) { }      // incluindo atraso
       digitalWrite(LED_GPIO, LOW);     // LED desligado
