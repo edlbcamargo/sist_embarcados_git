@@ -1,18 +1,19 @@
-// the setup function runs once when you press reset or power the board
+// a funcao setup roda apenas uma vez, quando a placa eh alimentada
+// ou o botao reset eh pressionado
 void setup() {
-  // initialize digital pin LED_BUILTIN as an output.
+  // inicializa o pino digital LED_BUILTIN como saida
   pinMode(LED_BUILTIN, OUTPUT);
 }
 
-// the loop function runs over and over again forever
+// a funcao loop roda sem parar...
 void loop() {
-  digitalWrite(LED_BUILTIN, HIGH);//turn the LED on (HIGH is the voltage level)
-  delay(1000);                       // wait for a second
-  digitalWrite(LED_BUILTIN, LOW);//turn the LED off by making the voltage LOW
-  delay(300);                       // wait for a second
-  digitalWrite(LED_BUILTIN, HIGH);//turn the LED on (HIGH is the voltage level)
-  delay(300);                       // wait for a second
-  digitalWrite(LED_BUILTIN, LOW);//turn the LED off by making the voltage LOW
-  delay(300);                       // wait for a second
+  digitalWrite(LED_BUILTIN, HIGH);  // liga o LED
+  delay(1000);                      // espera 1000ms
+  digitalWrite(LED_BUILTIN, LOW);   // desliga o LED
+  delay(300);                       // espera 300ms
+  digitalWrite(LED_BUILTIN, HIGH);  // liga o LED
+  delay(300);                       // espera 300ms
+  digitalWrite(LED_BUILTIN, LOW);   // desliga o LED
+  delay(300);                       // espera 300ms
 }
 
