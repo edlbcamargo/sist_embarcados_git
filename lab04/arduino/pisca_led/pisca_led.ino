@@ -1,8 +1,9 @@
 // a funcao setup roda apenas uma vez, quando a placa eh alimentada
 // ou o botao reset eh pressionado
 void setup() {
-  // inicializa o pino digital LED_BUILTIN como saida
-  pinMode(LED_BUILTIN, OUTPUT);
+  Serial.begin(9600, SERIAL_8N1);  // configura a comunicacao serial
+  pinMode(LED_BUILTIN, OUTPUT);     // inicializa o pino digital LED_BUILTIN como saida
+  Serial.write("Final da configuracao\n"); // envia uma mensagem pela comunicacao serial
 }
 
 // a funcao loop roda sem parar...
