@@ -22,8 +22,8 @@ int main(){
    options.c_iflag = IGNPAR | ICRNL;   // ignora erros de paridade
    tcflush(file, TCIFLUSH);            // descarta informacao no arquivo
    tcsetattr(file, TCSANOW, &options); // aplica alteracoes imediatamente
-   unsigned char transmit[24] = "Testando a comunicacao!";  // cria uma frase
-   if ((count = write(file, &transmit, 24))<0){             // transmite a frase
+   unsigned char transmit[22] = "Testando a comunicacao";  // cria uma frase
+   if ((count = write(file, &transmit, 22))<0){             // transmite a frase
       perror("Falha ao escrever na saida\n");
       return -1;
    }
@@ -34,7 +34,10 @@ int main(){
       return -1;
    }
    if (count==0) printf("Nao houve resposta!\n");
-   else printf("Foram lidos [%d] caracteres: %s\n",count,receive);
+   else{
+      receive[count]=0;                // indica o final da mensagem
+      printf("Foram lidos [%d] caracteres: %s\n",count,receive);
+   }
    close(file);
    return 0;
 }
