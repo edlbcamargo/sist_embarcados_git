@@ -3,7 +3,8 @@
 void setup() {
   Serial.begin(9600, SERIAL_8N1);   // configura a comunicacao serial
   pinMode(LED_BUILTIN, OUTPUT);     // inicializa o pino digital LED_BUILTIN (pino 13) como saida
-  Serial.write("Final da configuracao. Saida no pino %d.\n",LED_BUILTIN); // envia uma mensagem pela comunicacao serial
+  Serial.write("Final da configuracao.\nSaida na porta "); // envia uma mensagem pela comunicacao serial
+  Serial.print(LED_BUILTIN);
 }
 
 // a funcao loop roda sem parar...
