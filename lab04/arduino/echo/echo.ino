@@ -1,4 +1,4 @@
-// script baseado no código disponibilizado em:
+// programa baseado no codigo disponibilizado em:
 // Derek Molloy, Exploring Raspberry Pi: Interfacing to the Real World with Embedded Linux,
 // Wiley 2016, ISBN 978-1-119-1868-1, http://www.exploringrpi.com/
 
@@ -9,7 +9,7 @@ void setup() {
 }
 
 void loop() {
-   byte charIn;                  // cria uma variavel para armazenar o caracter recebido
+   byte charIn;                   // cria uma variavel para armazenar o caracter recebido
    if(Serial.available()){       // verifica se recebeu algo pela serial
       charIn = Serial.read();    // le o caracter recebido
       Serial.write(charIn);      // envia o caracter recebido
