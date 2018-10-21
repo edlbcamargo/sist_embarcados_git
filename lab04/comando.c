@@ -9,7 +9,7 @@
 #include<string.h>
 
 int main(int argc, char *argv[]){
-   int file, count;
+   int file, count, valor;
    if(argc!=2){
        printf("Numero invalido de argumentos. Saindo...\n");
        return -2;
@@ -39,6 +39,10 @@ int main(int argc, char *argv[]){
    else {
       receive[count]=0;  // o Arduino nao envia o caractere nulo (\0=0)
       printf("Foram lidos [%d] caracteres: %s\n",count,receive);
+      if (strncmp(receive,"Brilho do LED ajustado para ",28)==0){
+         sscanf(receive,"%*s %*s %*s %*s %*s %d",&valor);
+         printf("Valor ajustado: %d\n",valor);
+      }
    }
    close(file);
    return 0;
