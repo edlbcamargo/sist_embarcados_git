@@ -10,7 +10,7 @@ void loop(){
    float potencial = valor * (5.0f/1023.0f); // converte o valor lido em potencial
    Serial.print("Valor lido: ");             // envia os valores pela porta serial
    Serial.print(valor);
-   Serial.print("; Potencial correspondente: );
+   Serial.print("; Potencial correspondente: ");
    Serial.print(potencial);
    Serial.print("V.\n");
    delay(1000);
