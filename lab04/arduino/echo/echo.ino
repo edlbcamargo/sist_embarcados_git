@@ -9,10 +9,10 @@ void setup() {
 }
 
 void loop() {
-   byte charIn;                   // cria uma variavel para armazenar o caracter recebido
+   byte charIn;                  // cria uma variavel para armazenar o caractere recebido
    if(Serial.available()){       // verifica se recebeu algo pela serial
-      charIn = Serial.read();    // le o caracter recebido
-      Serial.write(charIn);      // envia o caracter recebido
+      charIn = Serial.read();    // le o caractere recebido
+      Serial.write(charIn);      // envia o caractere recebido
    }
 }
 
