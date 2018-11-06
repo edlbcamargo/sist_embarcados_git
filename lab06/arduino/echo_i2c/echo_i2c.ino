@@ -7,8 +7,8 @@
 const byte slaveAddr = 0x44;       // guarda o endereco escravo do Arduino
 int dado;                          // guarda o dado recebido
  
-void setup() {                     // configura o Arduino
-  TWBR=20000L;                     // a frequencia do i2c: 20000L = 20kHz
+void setup() {                    // configura o Arduino
+  TWBR=100000L;                    // a frequencia do i2c: 100000L = 100kHz
   Wire.begin(slaveAddr);           // configura o Arduino como um dispositivo escravo
   Wire.onReceive(receiveData);     // ajusta a funcao chamada ao receber um dado
   Wire.onRequest(respondData);     // ajusta a funcao chamada para responder
@@ -23,5 +23,6 @@ void receiveData(int x){           // funcao chamada ao receber um dado
 }
  
 void respondData(){                // funcao chamada para responder
+  delay(1);                        // pode ser necessario em velocidades de comunicacao mais altas
   Wire.write(dado);                // envia o endereco recebido de volta para a RasberryPi
 }

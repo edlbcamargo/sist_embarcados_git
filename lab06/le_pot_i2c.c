@@ -23,7 +23,7 @@ int main(int argc, char **argv){
    }
 
    // verifica se foi passado um valor para o limite do alarme
-   if(argc==2){           
+   if(argc==2){
      if (sscanf(argv[1],"%i",&alert)!=1) { // converte o argumento string para int
         perror("Falha ao ler o valor do limite do alarme.\n");
         return 1;
@@ -35,7 +35,7 @@ int main(int argc, char **argv){
      char alertbuf[] = {0x02, 0, 0};    // enviando limite em 0x02
      alertbuf[1] = alert & 0xFF;        // byte menos significativo
      alertbuf[2] = alert >> 8;          // byte mais significativo
-     
+
      printf("Ajustando limite do alarme em %d.\n", alert);
      if(write(file, alertbuf, 3)!=3){
         perror("Falha ao ajustar o limite do alarme!\n");
