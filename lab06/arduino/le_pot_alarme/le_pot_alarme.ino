@@ -25,10 +25,10 @@ void enviaDadosPelaSerial(){              // opcional, para debug
   Serial.print("Valor lido: "); Serial.print(valorPot);
   Serial.print("; limite do alarme: "); Serial.print(limiteAlarme);
   Serial.print("; e buffer = 0x");
-  Serial.print(buffer[0],HEX); Serial.print(" "); // byte mais significativo do valor lido
-  Serial.print(buffer[1],HEX); Serial.print(" "); // byte menos significativo do valor lido
-  Serial.print(buffer[2],HEX); Serial.print(" "); // byte mais significativo do alarme
-  Serial.print(buffer[3],HEX); Serial.print(" "); // byte menos significativo do alarme
+  Serial.print(buffer[0],HEX); Serial.print(" "); // byte menos significativo do valor lido
+  Serial.print(buffer[1],HEX); Serial.print(" "); // byte mais significativo do valor lido
+  Serial.print(buffer[2],HEX); Serial.print(" "); // byte menos significativo do alarme
+  Serial.print(buffer[3],HEX); Serial.print(" "); // byte mais significativo do alarme
   Serial.println(buffer[4],HEX);                  // valor ajustado no LED
 }
 
