@@ -6,7 +6,7 @@ echo '<TITLE>Pagina com CGI</TITLE></HEAD>'
 echo '<BODY><H1>Página teste com CGI.</H1>'
 echo '<PARA>'
 hostname
-echo ' está ligado a '
-uptime
+echo ' está ligado desde '
+uptime -s
 echo '</PARA></HTML>'
 
