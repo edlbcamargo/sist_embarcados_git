@@ -13,7 +13,7 @@ byte buffer[5];                    // guarda o valor lido, limite de alarme e va
  
 void setup(){
   pinMode(pinoLED, OUTPUT);        // usar um LED como alarme
-  TWBR=100000L;                    // a frequencia do i2c: 100000L = 100kHz
+  TWBR=10000L;                     // a frequencia do i2c: 10000L = 10kHz
   Wire.begin(enderecoEscravo);     // configura o Arduino como um dispositivo escravo
   Wire.onReceive(funcaoDadoRecebido); // ajusta a funcao chamada ao receber um dado
   Wire.onRequest(funcaoResposta);  // ajusta a funcao chamada para responder
