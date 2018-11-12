@@ -14,7 +14,7 @@ plot "$ARQUIVODADOS" \
      linewidth 1 \
      pointtype 2 \
      pointsize 1.0 \
-     title "dados" \
+     title "meus dados" \
      with linespoints
 EOF
 
