@@ -1,6 +1,6 @@
 #!/bin/sh
-ARQUIVODADOS=./dados.txt
-ARQUIVOSAIDA=./dados.png
+ARQUIVODADOS=/home/pi/sist_embarcados_git/lab07/gnuplot/dados.txt
+ARQUIVOSAIDA=/home/pi/sist_embarcados_git/lab07/gnuplot/dados.png
 
 gnuplot << EOF
 set title "Título"
@@ -14,6 +14,7 @@ plot "$ARQUIVODADOS" \
      linewidth 1 \
      pointtype 2 \
      pointsize 1.0 \
+     title "dados" \
      with linespoints
 EOF
 
