@@ -22,7 +22,7 @@ void setup (void)
 // Funcao de interrupcao do barramento SPI
 ISR (SPI_STC_vect)  
 {
-    unsigned char byteRecebido = SPDR;
+    unsigned char byteRecebido = SPDR;      // le um byte do barramento SPI
     
     switch ( byteRecebido ){
         case 'e':                           // solicitando dados, enviar...
