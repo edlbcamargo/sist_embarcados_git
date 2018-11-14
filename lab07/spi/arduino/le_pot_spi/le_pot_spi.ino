@@ -20,8 +20,6 @@ void setup (void)
 
 //////////////////////////////////////////////////////////////////////////////////
 // Funcao de interrupcao do barramento SPI
-// Guarda os dados recebidos em um buffer circular, ou seja, ao chegar no final do
-// buffer, comeca a gravar no comeco novamente
 ISR (SPI_STC_vect)  
 {
     unsigned char byteRecebido = SPDR;
