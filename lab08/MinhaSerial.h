@@ -51,39 +51,48 @@ int MinhaSerial<T>::AbreDispositivo(const char *path){
 template <class T>
 int MinhaSerial<T>::Envia(const void *buf, size_t nbytes){
 	int count;
-    if ( (count = write(file, buf, nbytes)) < 0 ){
-        perror("Falha ao escrever na saida.\n");
-        return -1;
-    }
-    return count;
+	if ( file != 0 ) {
+		if ( (count = write(file, buf, nbytes)) < 0 ){
+			perror("Falha ao escrever na saida.\n");
+			return -1;
+		}
+		return count;
+	}
+	else return -1;
 }
 
 template <class T>
 int MinhaSerial<T>::Recebe(void *buf, size_t nbytes){
 	int count;
-	if ((count = read(file, buf, nbytes))<0){        // recebe os dados
-	    perror("Falha ao ler da entrada\n");
-		return -1;
-    }
-    return count;
+	if ( file != 0 ) {
+		if ((count = read(file, buf, nbytes))<0){        // recebe os dados
+			perror("Falha ao ler da entrada\n");
+			return -1;
+		}
+		return count;
+	}
+	else return -1;
 }
 
 template <class T>
 void MinhaSerial<T>::RecebeMedida(float &valorVolts){
 	unsigned char receive[2];        // cria um buffer para receber os dados
 	int count, valorRecebido;
-	count = Recebe((void*)receive, 2);
-    if ( count == 2 ) {
-        valorRecebido = receive[0] | receive[1] << 8;
-		if ( valorRecebido >= 0 && valorRecebido <= 1023 )
-		{
-			valorVolts = valorRecebido * 5.0 / 1023.0;
+	if ( file != 0 ) {
+		count = Recebe((void*)receive, 2);
+		if ( count == 2 ) {
+			valorRecebido = receive[0] | receive[1] << 8;
+			if ( valorRecebido >= 0 && valorRecebido <= 1023 )
+			{
+				valorVolts = valorRecebido * 5.0 / 1023.0;
+			}
 		}
-    }
-    else
-    {
-		valorVolts = -1;
+		else
+		{
+			valorVolts = -2;
+		}
 	}
+	else valorVolts = -1;
 }
 
 template <class T>
