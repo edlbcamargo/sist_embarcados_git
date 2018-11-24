@@ -13,7 +13,7 @@ int main(){
 	   conexaoSerial.RecebeMedida(valor);
        if ( valor >= 0 ) {
 		   nValoresRecebidos++;
-           printf("recebeu %d: %f \n",nValoresRecebidos, valor );
+           std::cout << "recebeu " << nValoresRecebidos << ": " << valor << std::endl;
 	   }
        usleep(50000);               // aguarda 50ms
    }

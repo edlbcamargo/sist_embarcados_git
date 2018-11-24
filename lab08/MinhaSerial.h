@@ -1,16 +1,16 @@
 #ifndef MINHASERIAL_H
 #define MINHASERIAL_H
 
-#include<stdio.h>
-#include<fcntl.h>
-#include<unistd.h>
-#include<termios.h>
+#include<iostream>	 // para cout e cerr
+#include<fcntl.h>    // para open()
+#include<unistd.h>   // para usleep(), read(), write(), close()
+#include<termios.h>  // para comunicacao serial
 
 template <class T>
 class MinhaSerial {
 	public:
-	    MinhaSerial();
-	    ~MinhaSerial();
+	    MinhaSerial();  // construtor da classe
+	    ~MinhaSerial(); // destrutor da classe
 	    int AbreDispositivo(const char *path);
 	    int Envia(const void *buf, size_t nbytes);
 	    int Recebe(void *buf, size_t nbytes);
@@ -34,7 +34,7 @@ MinhaSerial<T>::~MinhaSerial(){
 template <class T>
 int MinhaSerial<T>::AbreDispositivo(const char *path){
     if ((file = open(path, O_RDWR | O_NOCTTY | O_NDELAY))<0){
-        perror("UART: Falha ao abrir o arquivo.\n");
+        std::cerr << "UART: Falha ao abrir o arquivo." << std::endl;
         return -1;
     }
     struct termios options;             // cria estruturas para configurar a comunicacao
@@ -53,7 +53,7 @@ int MinhaSerial<T>::Envia(const void *buf, size_t nbytes){
 	int count;
 	if ( file != 0 ) {
 		if ( (count = write(file, buf, nbytes)) < 0 ){
-			perror("Falha ao escrever na saida.\n");
+			std::cerr << "Falha ao escrever na saida." << std::endl;
 			return -1;
 		}
 		return count;
@@ -66,7 +66,7 @@ int MinhaSerial<T>::Recebe(void *buf, size_t nbytes){
 	int count;
 	if ( file != 0 ) {
 		if ((count = read(file, buf, nbytes))<0){        // recebe os dados
-			perror("Falha ao ler da entrada\n");
+			std::cerr << "Falha ao ler da entrada" << std::endl;
 			return -1;
 		}
 		return count;
