@@ -20,13 +20,13 @@ void loop() {
          int level = intString.toInt();        // converte o restante do comando para inteiro
          if(level>=0 && level<=255){           // verifica se eh um numero valido
             analogWrite(ledPin, level);        // escreve no PWM o valor desejado
-            sprintf(buffer, "Brilho do LED ajustado para %d", level);
+            sprintf(buffer, "Brilho do LED ajustado para %d\n", level);
          }
          else{                                 // nao eh um numero valido
-            sprintf(buffer, "Erro: %d esta fora da faixa valida.", level);
+            sprintf(buffer, "Erro: %d esta fora da faixa valida.\n", level);
          } 
       }                                        // comando nao reconhecido
-      else{ sprintf(buffer, "Comando incorreto: %s", command.c_str()); }
+      else{ sprintf(buffer, "Comando incorreto: %s\n", command.c_str()); }
       Serial.print(buffer);                   // envia o buffer para a RaspberryPi
    }
 }
