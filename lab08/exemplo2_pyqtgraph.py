@@ -20,7 +20,7 @@ def saindo():
     print('Saindo')
 
 def update():
-    global data1, curve1, ptr1, conexaoSerial, x_atual, npontos
+    global data1, curve1, ptr1, conexaoSerial, x_atual, npontos, previousTime
     if conexaoSerial.inWaiting() > 1:
         dado1 = conexaoSerial.read()
         dado2 = conexaoSerial.read()
