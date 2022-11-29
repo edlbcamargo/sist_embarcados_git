@@ -12,11 +12,12 @@ win = pg.GraphicsWindow()
 win.setWindowTitle('pyqtgraph example: Scrolling Plots')
 
 p1 = win.addPlot()
-data1 = np.zeros(300)
+p1.setYRange(0,5,padding=0)
+data1 = np.zeros(200)
 curve1 = p1.plot(data1)
 ptr1 = 0
 
-conexaoSerial = serial.Serial('/dev/ttyUSB0',115200)
+conexaoSerial = serial.Serial('/dev/ttyACM0',115200)
 conexaoSerial.write(b'i')
 
 
