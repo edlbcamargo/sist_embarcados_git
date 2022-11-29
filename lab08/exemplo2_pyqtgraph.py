@@ -55,8 +55,8 @@ proxy2.setWidget(botao2)
 botao2.clicked.connect(para_coleta)
 
 p2 = win.addLayout(row=2, col=0)
-p2.addItem(proxy1,row=1,col=1)
-p2.addItem(proxy2,row=2,col=1)
+p2.addItem(proxy1,row=0,col=0)
+p2.addItem(proxy2,row=1,col=0)
 
 conexaoSerial = serial.Serial('/dev/ttyACM0',115200)
 conexaoSerial.write(b'i')
