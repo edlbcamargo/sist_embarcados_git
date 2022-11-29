@@ -7,6 +7,7 @@ import pyqtgraph as pg
 import numpy as np
 import serial
 import atexit
+import time
 
 def inicia_coleta():
     conexaoSerial.write(b'i')
@@ -32,6 +33,10 @@ def update():
             x_atual = 0
         
         curve1.setData(data1, connect="finite")
+        actualTime = time.time()*1000
+        taxa = str(round(actualTime-previousTime))
+        previousTime = actualTime
+        texto.setText(str(x_atual)+"; taxa: "+taxa.zfill(3)+"ms" )
 
 win = pg.GraphicsWindow()
 win.setWindowTitle('Coletando dados do Arduino via Porta Serial')
@@ -43,6 +48,11 @@ p1.setYRange(0,5,padding=0)
 data1 = np.zeros(npontos)
 curve1 = p1.plot(data1)
 ptr1 = 0
+
+previousTime = time.time()*1000 # pega a hora atual, em milissegundos
+texto = pg.TextItem(text="", color=(255,255,0), anchor=(0,1))
+p1.addItem(texto)
+texto.setPos(0,0) # adiciona o texto na posição (0,0) do gráfico
 
 proxy1 = QtGui.QGraphicsProxyWidget()
 botao1 = QtGui.QPushButton('Inicia')
