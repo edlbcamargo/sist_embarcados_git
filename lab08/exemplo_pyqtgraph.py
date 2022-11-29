@@ -21,7 +21,7 @@ conexaoSerial.write(b'i')
 
 
 def saindo():
-    conexaoSerial.write(b'i')
+    conexaoSerial.write(b'p')
     print('Saindo')
 
 def update():
