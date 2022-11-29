@@ -36,7 +36,7 @@ def update():
         actualTime = time.time()*1000
         taxa = str(round(actualTime-previousTime))
         previousTime = actualTime
-        texto.setText(str(x_atual)+"; taxa: "+taxa.zfill(3)+"ms" )
+        texto.setText("taxa: "+taxa.zfill(3)+"ms" )
 
 win = pg.GraphicsWindow()
 win.setWindowTitle('Coletando dados do Arduino via Porta Serial')
