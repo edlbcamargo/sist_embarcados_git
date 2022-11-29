@@ -54,7 +54,7 @@ botao2 = QtGui.QPushButton('Para')
 proxy2.setWidget(botao2)
 botao2.clicked.connect(para_coleta)
 
-p2 = win.addLayout(row=2, col=0)
+p2 = win.addLayout(row=1, col=0)
 p2.addItem(proxy1,row=0,col=0)
 p2.addItem(proxy2,row=1,col=0)
 
